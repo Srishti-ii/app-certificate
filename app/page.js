@@ -4,14 +4,12 @@ import React, { useState } from 'react';
 import { Award, User, CheckCircle, QrCode, Shield, Building, Upload, Search, FileText, Eye, Download } from 'lucide-react';
 
 const CertificateApp = () => {
-const [currentView, setCurrentView] = useState('home'); // 'home', 'upload', 'access'
+const [currentView, setCurrentView] = useState('home');
 const [uploadStep, setUploadStep] = useState(1);
 const [accessStep, setAccessStep] = useState(1);
 
-// Certificate storage (in real app, this would be blockchain/database)
 const [certificates, setCertificates] = useState([]);
 
-// Upload form data
 const [certificateForm, setCertificateForm] = useState({
 studentName: '',
 studentEmail: '',
@@ -24,7 +22,7 @@ duration: '',
 certificateFile: null
 });
 
-// Access form data
+
 const [accessForm, setAccessForm] = useState({
 certificateId: '',
 studentEmail: ''
@@ -33,7 +31,6 @@ studentEmail: ''
 const [foundCertificate, setFoundCertificate] = useState(null);
 const [isVerifying, setIsVerifying] = useState(false);
 
-// Upload Section Functions
 const handleInputChange = (e) => {
 const { name, value } = e.target;
 setCertificateForm(prev => ({
@@ -56,7 +53,6 @@ alert('Please fill in all required fields');
 return;
 }
 
-// Generate unique certificate
 const newCertificate = {
 id: `CERT-${Date.now()}`,
 blockchainHash: `0x${Math.random().toString(16).substr(2, 16)}`,
@@ -85,7 +81,6 @@ certificateFile: null
 });
 };
 
-// Access Section Functions
 const handleAccessInputChange = (e) => {
 const { name, value } = e.target;
 setAccessForm(prev => ({
